@@ -1,0 +1,50 @@
+html,body{
+    height: 100%;
+    line-height: unset !important;
+    background-color: #fff;
+}
+
+*{
+    box-sizing: border-box;
+}
+
+.page {
+    height: 100%;
+    overflow: auto;
+}
+
+.button{
+    display: inline-block;
+    text-decoration: none;
+}
+
+a:focus, input:focus, button:focus, textarea:focus {
+    outline: none;
+}
+
+img {
+    content: normal !important;
+}
+
+#app .van-picker-column{
+    flex: auto;
+}
+
+.left{
+    float: left;
+}
+
+.right{
+    float: right;
+}
+
+.clearfix::after {
+    content: "";
+    clear: both;
+    display: table;
+}
+
+.button.disabled{
+    background-color: #d9d9d9;
+    color: #ffffff;
+}
