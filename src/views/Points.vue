@@ -9,9 +9,11 @@
         <div class="point-wrapper">
             <div>现有积分</div>
             <div class="big-point">{{points}}</div>
+            <div class="money">={{points/100}}元</div>
             <div class="point-tip">
                 积分大于2000方可提现
             </div>
+
             <div class="button goto-exchange" @click="gotoExchange()" :class="{'disabled': points < 2000}">积分提现</div>
         </div>
         <div class="exchange-explain">
@@ -40,12 +42,17 @@ export default {
       })
       .then(response => {
         if(response.data.data){
+            if(response.data.data.subscribe !== 1){
+                window.location.href = "https://mp.weixin.qq.com/mp/profile_ext?action=home&__biz=MzU1NjU3NDUwNQ==&scene=124#wechat_redirect";
+                return;
+            }
             if(!response.data.data.mobile){
                 this.$router.replace({name: 'bindaccount',params:{from:'points'}});
                 return;
             }
             this.mobile = this.fuzzyMobile(response.data.data.mobile);
             this.points = response.data.data.score;
+
         }
       })
       .catch((error) => {
@@ -70,6 +77,15 @@ export default {
         margin: auto;
         text-align: center;
     }
+
+    .money{
+        font-size:14px;
+        font-weight:400;
+        color:rgba(51,51,51,1);
+        line-height:20px;
+        margin-bottom: 3.6vh;
+    }
+
     .account-wrapper{
         margin: 50px 20px 0;
         padding-bottom: 15px;
@@ -91,6 +107,8 @@ export default {
 
     .big-point{
         font-size: 40px;
+        height:56px;
+        line-height:56px;
         color: #333333;
     }
 
@@ -100,7 +118,7 @@ export default {
     }
 
     .goto-exchange{
-        margin-top: 48px;
+        margin-top: 2.25vh;
         width: 300px;
         height: 52px;
         line-height: 52px;

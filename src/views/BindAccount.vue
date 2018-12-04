@@ -2,7 +2,7 @@
     <div class="bind-page page">
         <div class="bind-form">
             <div style="margin-bottom: 20px;">
-                <img class="title" src="../assets/image/title.jpg" alt="">
+                <img class="title" src="../assets/image/logo.png" alt="LOGO">
                 <input type="number" pattern="\d*" v-model="mobile" maxlength="11" placeholder="请输入手机号" class="mobile input" v-bind:class="{'has-error': mobileMsg}">
                 <div class="error-msg" v-show="mobileMsg">{{mobileMsg}}</div>
             </div>
@@ -164,7 +164,7 @@ export default {
 
     .title{
         margin-bottom: 30px;
-        width:121px;
+        width: 75px;
         color:rgba(33,36,40,1);
     }
 
